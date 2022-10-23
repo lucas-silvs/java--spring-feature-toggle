@@ -1,42 +1,47 @@
 package com.lucassilvs.featuretoggle.configuration;
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+@EnableConfigurationProperties
+public class SecurityConfig {
 
-    /**
-     * {@inheritDoc}
+    /*
+    Criando usuário para validar durante a requisição
      */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-            throws Exception {
+    @Bean
+    public UserDetailsService userDetailsService() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        auth.inMemoryAuthentication()
-                .withUser("user").password(encoder.encode("user"))
-                .authorities("user").and()
-                .withUser("superuser").password(encoder.encode("superuser"))
-                .authorities("user", "superuser").and()
-                .withUser("admin").password(encoder.encode("admin"))
-                .authorities("user", "admin");
+        UserDetails userDetails = User.withUsername("user")
+                .password(encoder.encode("password01"))
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(userDetails);
     }
 
-    /**
-     * {@inheritDoc}
+    /*
+    definindo validação de credencial e seus endpoints
      */
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    @Bean
+    protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and().httpBasic();
+        return http.build();
     }
 
 
