@@ -1,5 +1,6 @@
 package com.lucassilvs.featuretoggle.configuration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,11 +22,18 @@ public class SecurityConfig {
     /*
     Criando usuário para validar durante a requisição
      */
+
+    @Value("${security.username}")
+    private String username;
+
+    @Value("${security.password}")
+    private String password;
+
     @Bean
     public UserDetailsService userDetailsService() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        UserDetails userDetails = User.withUsername("user")
-                .password(encoder.encode("password01"))
+        UserDetails userDetails = User.withUsername(username)
+                .password(encoder.encode(password))
                 .roles("USER")
                 .build();
 
