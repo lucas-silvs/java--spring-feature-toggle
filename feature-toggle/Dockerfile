@@ -12,8 +12,16 @@ LABEL "email"="lucas.parkl@outlook.com"
 
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/app.jar
 WORKDIR /app
-ENTRYPOINT [ "java", "-jar", "/app/app.jar"]
-EXPOSE 5000 9090
+
+ENV JAVA_OPTS "$JAVA_OPTS \
+    -XX:+UseParallelGC \
+    -XX:ActiveProcessorCount=2 \
+    -XX:MaxRAMPercentage=75 \
+    --add-opens java.base/java.lang=ALL-UNNAMED \
+    -Duser.timezone=America/Fortaleza"
+
+ENTRYPOINT [ "sh", "-c", "java ${JAVA_OPTS} -jar app.jar"]
+EXPOSE 5000 9090;
 
 #para buildar execute docker build -t Nome_da_imagem .
 #execute sudo docker run -e SPRING_PROFILES_ACTIVE=docker -p 5000:5000 -i feature--toggle
