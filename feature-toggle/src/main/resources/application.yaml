@@ -3,6 +3,12 @@ server:
   servlet:
     context-path: /feature--toggle
 
+
+ff4j:
+  api:
+    spring-doc:
+      enabled: true
+
 security:
   username: dev
   password: devpass01
