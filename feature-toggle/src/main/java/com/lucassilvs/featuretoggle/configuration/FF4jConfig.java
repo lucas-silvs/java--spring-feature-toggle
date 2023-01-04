@@ -3,6 +3,7 @@ package com.lucassilvs.featuretoggle.configuration;
 import org.ff4j.FF4j;
 import org.ff4j.audit.repository.InMemoryEventRepository;
 import org.ff4j.property.store.InMemoryPropertyStore;
+import org.ff4j.security.SpringSecurityAuthorisationManager;
 import org.ff4j.store.InMemoryFeatureStore;
 import org.ff4j.web.controller.HomeController;
 import org.slf4j.Logger;
@@ -35,9 +36,8 @@ public class FF4jConfig {
         // quando uma feature não é encontrada, ela sera criada automaticamente, porem desabilitada
         ff4j.autoCreate(true);
 
-        // To define RBAC access, the application must have a logged user
         // definindo Role Base Access Control (Controle de Acesso Baseado em Funções), para isso é necessário um usuário logado
-        //ff4j.setAuthManager(...);
+        ff4j.setAuthorizationsManager(new SpringSecurityAuthorisationManager());
 
         //cria uma camada de cache para aliviar o banco de dados
         //ff4j.cache([a cache Manager]);
