@@ -26,13 +26,6 @@ public class FF4jConfig {
 
         FeatureStore featureStore = new FeatureStoreDynamoDB(dynamoDbClient);
         PropertyStore propertyStore = new PropertyStoreDynamoDB(dynamoDbClient);
-
-
-
-
-        /*
-         * criando um armazenamento de features em memória
-         */
         ff4j.setFeatureStore(featureStore);
         ff4j.setPropertiesStore(propertyStore);
 
