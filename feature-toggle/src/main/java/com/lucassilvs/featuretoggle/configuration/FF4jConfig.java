@@ -4,10 +4,13 @@ import org.ff4j.FF4j;
 import org.ff4j.core.FeatureStore;
 import org.ff4j.dynamodb.feature.FeatureStoreDynamoDB;
 import org.ff4j.dynamodb.property.PropertyStoreDynamoDB;
+import org.ff4j.property.store.InMemoryPropertyStore;
 import org.ff4j.property.store.PropertyStore;
 import org.ff4j.security.SpringSecurityAuthorisationManager;
+import org.ff4j.store.InMemoryFeatureStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 
 /***
@@ -20,7 +23,8 @@ public class FF4jConfig {
      */
     // private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
     @Bean
-    public FF4j getFF4j(DynamoDbClient dynamoDbClient) {
+    @Profile("mongo")
+    public FF4j getFF4jMongo(DynamoDbClient dynamoDbClient) {
         FF4j ff4j = new FF4j();
 
 
@@ -43,6 +47,27 @@ public class FF4jConfig {
         //ff4j.cache([a cache Manager]);
 
         return ff4j;
+    }
 
+    @Profile("memory")
+    public FF4j getFF4jInMemory() {
+        FF4j ff4j = new FF4j();
+
+        ff4j.setFeatureStore(new InMemoryFeatureStore());
+        ff4j.setPropertiesStore(new InMemoryPropertyStore());
+
+        // ativando auditoria e monitoramento, valor padrão é false
+        ff4j.audit(true);
+
+        // quando uma feature não é encontrada, ela sera criada automaticamente, porem desabilitada
+        ff4j.autoCreate(true);
+
+        // definindo Role Base Access Control (Controle de Acesso Baseado em Funções), para isso é necessário um usuário logado
+        ff4j.setAuthorizationsManager(new SpringSecurityAuthorisationManager());
+
+        //cria uma camada de cache para aliviar o banco de dados
+        //ff4j.cache([a cache Manager]);
+
+        return ff4j;
     }
 }
