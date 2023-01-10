@@ -1,0 +1,4 @@
+#Configurações actuator
+management:
+  server:
+    port: 9090

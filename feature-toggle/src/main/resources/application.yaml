@@ -10,10 +10,5 @@ ff4j:
       enabled: true
 
 security:
-  username: dev
-  password: devpass01
-
-#Configurações actuator
-management:
-  server:
-    port: 9090
+  username: ${ACCESS_USERNAME:admin}
+  password: ${ACCESS_PASSWORD:admin}

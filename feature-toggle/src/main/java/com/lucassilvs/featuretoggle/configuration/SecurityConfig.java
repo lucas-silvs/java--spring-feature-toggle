@@ -32,7 +32,6 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//        PasswordEncoder encoder = passwordEncoder();
         UserDetails userDetails = User.withUsername(username)
                 .password(encoder.encode(password))
                 .roles("USER")
@@ -40,11 +39,6 @@ public class SecurityConfig {
 
         return new InMemoryUserDetailsManager(userDetails);
     }
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
 
     /*
     definindo validação de credencial e seus endpoints
@@ -56,8 +50,6 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/actuator/**")
-                .permitAll()
-                .antMatchers("/actuator")
                 .permitAll()
                 .and()
                 .authorizeRequests()
