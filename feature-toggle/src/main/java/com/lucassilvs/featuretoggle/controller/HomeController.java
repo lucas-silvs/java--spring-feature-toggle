@@ -21,8 +21,12 @@ public class HomeController {
     private static final String FEATURE_SHOW_USERNAME = "showUserName";
     private static final String PROPERTY_USERNAME = "username";
 
-    @Autowired
     public FF4j ff4j;
+
+    @Autowired
+    public HomeController(FF4j ff4j) {
+        this.ff4j = ff4j;
+    }
 
     @PostConstruct
     public void populateDummyFeatureForMySample() {
@@ -36,9 +40,9 @@ public class HomeController {
             ff4j.createFeature(new Feature(FEATURE_SHOW_USERNAME, true));
         }
         if (!ff4j.getPropertiesStore().existProperty(PROPERTY_USERNAME)) {
-            ff4j.createProperty(new PropertyString(PROPERTY_USERNAME, "cedrick"));
+            ff4j.createProperty(new PropertyString(PROPERTY_USERNAME, "Luquinhas babiru"));
         }
-        LOGGER.info(" + Features and properties have been created for the sample.");
+        LOGGER.info(" + Properties e Features criadas para o teste.");
     }
 
     /*
