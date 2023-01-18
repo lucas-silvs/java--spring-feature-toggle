@@ -36,7 +36,6 @@ public class SecurityConfig {
                 .password(encoder.encode(password))
                 .roles("USER")
                 .build();
-
         return new InMemoryUserDetailsManager(userDetails);
     }
 
@@ -45,11 +44,14 @@ public class SecurityConfig {
      */
     @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.cors()
+                .and()
+                .csrf()
+                .disable()
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/actuator/**")
+                .antMatchers("/actuator/**", "/login/**")
                 .permitAll()
                 .and()
                 .authorizeRequests()
@@ -57,6 +59,5 @@ public class SecurityConfig {
                 .authenticated();
         return http.build();
     }
-
 
 }

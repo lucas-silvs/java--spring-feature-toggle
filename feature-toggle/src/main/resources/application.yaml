@@ -9,6 +9,17 @@ ff4j:
     spring-doc:
       enabled: true
 
+web-ui:
+  username: "admin"
+  password: "admin"
+
 security:
-  username: ${ACCESS_USERNAME:admin}
-  password: ${ACCESS_PASSWORD:admin}
+  username: ${ACCESS_USERNAME:teste}
+  password: ${ACCESS_PASSWORD:teste}
+
+logging:
+  level:
+    org:
+      apache:
+        tomcat: INFO
+    org.zalando.logbook: TRACE

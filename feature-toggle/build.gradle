@@ -17,6 +17,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	//logbook
+	implementation 'org.zalando:logbook-spring-boot-starter:2.14.0'
+
 	//ff4j
 	implementation 'org.ff4j:ff4j-spring-boot-starter:1.9'
 	implementation 'org.ff4j:ff4j-web:1.9'
