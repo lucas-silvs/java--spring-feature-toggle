@@ -2,14 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { Login } from "./components/Login";
+import Main from "./RouteIndex";
+import { BrowserRouter } from "react-router-dom";
+import RouteIndex from "./RouteIndex";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Login />
+    <BrowserRouter>
+      <RouteIndex />
+    </BrowserRouter>
   </React.StrictMode>
 );
 

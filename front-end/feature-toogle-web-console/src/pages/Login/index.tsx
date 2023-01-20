@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import Botao from "./Botao";
-import CampoTexto from "./CampoTexto";
+import Botao from "../../components/Botao";
+import CampoTexto from "../../components/CampoTexto";
 import "./Login.css";
 
 export function Login() {

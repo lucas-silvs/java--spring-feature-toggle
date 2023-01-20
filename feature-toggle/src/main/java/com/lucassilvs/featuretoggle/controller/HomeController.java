@@ -42,6 +42,12 @@ public class HomeController {
         if (!ff4j.getPropertiesStore().existProperty(PROPERTY_USERNAME)) {
             ff4j.createProperty(new PropertyString(PROPERTY_USERNAME, "Luquinhas babiru"));
         }
+
+        for (int i = 0; i < 8; i++) {
+            Feature feature = new Feature("feature_teste_" + i);
+            feature.setGroup(String.valueOf(i));
+            ff4j.createFeature(feature);
+        }
         LOGGER.info(" + Properties e Features criadas para o teste.");
     }
 
