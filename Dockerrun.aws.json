@@ -1,0 +1,15 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "java--teste",
+    "image": "{$AWS_ACCOUNT_ID}.dkr.ecr.{$AWS_DEFAULT_REGION}.amazonaws.com/java-teste"
+  },
+
+  "Ports": [
+    {
+      "ContainerPort": 5000,
+      "HostPort": 8080
+    }
+  ]
+}
+
