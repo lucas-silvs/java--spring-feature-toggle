@@ -4,8 +4,7 @@ phases:
   pre_build:
     commands:
       - echo logando no ECR...
-      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
-      - export IMAGE_TAG=`git rev-parse HEAD`
+      - export IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
   build:
     commands:
