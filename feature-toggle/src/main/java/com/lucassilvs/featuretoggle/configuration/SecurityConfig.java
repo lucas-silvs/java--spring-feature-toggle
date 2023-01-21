@@ -51,8 +51,6 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/actuator/**")
                 .permitAll()
-                .antMatchers("/actuator")
-                .permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest()

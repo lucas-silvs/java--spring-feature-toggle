@@ -18,8 +18,15 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	//ff4j
-	implementation 'org.ff4j:ff4j-spring-boot-starter:1.8.13'
-	implementation 'org.ff4j:ff4j-web:1.8.13'
+	implementation 'org.ff4j:ff4j-spring-boot-starter:1.9'
+	implementation 'org.ff4j:ff4j-web:1.9'
+	implementation 'org.ff4j:ff4j-store-aws-dynamodb:1.9'
+
+
+	//aws
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb
+	implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.12.376'
+
 
 }
 
