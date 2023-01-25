@@ -77,3 +77,4 @@ Flag utilizada para definir o tamanho total da mem√≥ria Heap, o valor recebido √
 - [FF4j](https://ff4j.github.io/)
 - [Spring Security](https://spring.io/projects/spring-security)
 - [Spring Boot](https://spring.io/projects/spring-boot)
+- [Live Zup Insight - Ajuste da performance Java em Kubernetes por Bruno Borges](https://www.youtube.com/watch?v=uGt1WKZK__0)
