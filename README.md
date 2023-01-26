@@ -59,7 +59,7 @@ Para execução no Kubernetes, é necessário ajustar a JVM para utilizar os rec
 Flag utilizada para informar a JVM para utilizar o Garbage Collector paralelo, evitando alta alocação de memória durante a execução da aplicação
 
 ### -XX:ActiveProcessorCount
-Flag utilizada para definir o número de CPU's que a JVM utilizará para calcular o tamanho do pool de threads para realizar as operações.
+Flag utilizada para definir o número de CPU's que a JVM utilizará para calcular o tamanho do pool de threads para realizar as operações. É recomendado utilizar essa configuração somente quando sua aplicação possui menos que 1000m de tempo de cpu definido.
 
 ### -XX:MaxRAMPercentage
 Flag utilizada para definir o tamanho total da memória Heap, o valor recebido é calculado a porcentagem da memória total disponivel no ambiente onde a aplicação está hospedada. Ex: 
