@@ -19,4 +19,4 @@ phases:
 
 artifacts:
   files:
-    - 'Dockerrun.aws.json'
+    - 'docker-compose.yaml'
