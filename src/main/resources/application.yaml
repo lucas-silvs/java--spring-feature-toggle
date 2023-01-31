@@ -1,0 +1,25 @@
+server:
+  port: 5000
+  servlet:
+    context-path: /feature--toggle
+
+
+ff4j:
+  api:
+    spring-doc:
+      enabled: true
+
+web-ui:
+  username: "admin"
+  password: "admin"
+
+security:
+  username: ${ACCESS_USERNAME:teste}
+  password: ${ACCESS_PASSWORD:teste}
+
+logging:
+  level:
+    org:
+      apache:
+        tomcat: INFO
+    org.zalando.logbook: TRACE

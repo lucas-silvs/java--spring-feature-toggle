@@ -1,0 +1,14 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "215975075539.dkr.ecr.us-east-1.amazonaws.com/java-teste:latest"
+  },
+
+  "Ports": [
+    {
+      "ContainerPort": 5000,
+      "HostPort": 8080
+    }
+  ]
+}
+

@@ -1,0 +1,42 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.5'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'java'
+}
+
+group = 'com.lucas-silvs'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//logbook
+	implementation 'org.zalando:logbook-spring-boot-starter:2.14.0'
+
+	//ff4j
+	implementation 'org.ff4j:ff4j-spring-boot-starter:1.9'
+	implementation 'org.ff4j:ff4j-web:1.9'
+	implementation 'org.ff4j:ff4j-store-aws-dynamodb:1.9'
+
+
+	//aws
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb
+	implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.12.376'
+
+
+}
+
+jar {
+	enabled = false
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
