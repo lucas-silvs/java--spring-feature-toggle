@@ -20,6 +20,13 @@ dependencies {
 	//logbook
 	implementation 'org.zalando:logbook-spring-boot-starter:2.14.0'
 
+	//logback
+	implementation 'ch.qos.logback.contrib:logback-json-classic:0.1.5'
+	implementation 'ch.qos.logback.contrib:logback-jackson:0.1.5'// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+	testImplementation 'ch.qos.logback:logback-classic:1.4.5'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+
+
 	//ff4j
 	implementation 'org.ff4j:ff4j-spring-boot-starter:1.9'
 	implementation 'org.ff4j:ff4j-web:1.9'
