@@ -23,8 +23,13 @@ dependencies {
 	//logback
 	implementation 'ch.qos.logback.contrib:logback-json-classic:0.1.5'
 	implementation 'ch.qos.logback.contrib:logback-jackson:0.1.5'// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
-	testImplementation 'ch.qos.logback:logback-classic:1.4.5'
+	testImplementation 'ch.qos.logback:logback-classic:1.2.6'
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+
+	implementation 'net.logstash.logback:logstash-logback-encoder:7.2'
+	implementation 'com.github.wnameless.json:json-flattener:0.16.0'
+
+
 
 
 	//ff4j
