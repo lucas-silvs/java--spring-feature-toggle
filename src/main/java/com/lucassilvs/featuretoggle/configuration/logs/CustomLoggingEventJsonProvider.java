@@ -9,7 +9,7 @@ public class CustomLoggingEventJsonProvider extends JsonProviders<ILoggingEvent>
     public CustomLoggingEventJsonProvider() {
     }
 
-    public void addTimestamp (LoggingEventFormattedTimestampJsonProvider provider) {
+    public void addTimestamp(LoggingEventFormattedTimestampJsonProvider provider) {
         this.addProvider(provider);
     }
 
@@ -41,9 +41,7 @@ public class CustomLoggingEventJsonProvider extends JsonProviders<ILoggingEvent>
         this.addProvider(provider);
     }
 
-    public void addStackTrace(StackTraceJsonProvider provider){
-        this.addProvider(provider);
-    }
+    public void addStackTrace(StackTraceJsonProvider provider){this.addProvider(provider);}
 
     public void  addRootStackTraceElement(RootStackTraceElementJsonProvider provider){
         this.addProvider(provider);

@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <property scope="context" name="logProperties"
-              value="type,correlation,method,uri,path,duration,status,action,erro"/>
-    <include resource="org/springframework/boot/logging/logback/default.xml"/>
-
-    <springProfile name="json-encoding">
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="com.lucassilvs.featuretoggle.configuration.logs.CustomLoggingEventCompositeJsonEncoder">
-            <provider>
-                <pattern>
+              value="type,correlation,method,uri,path,duration,status.action,error"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <springProfile name="json">
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="com.lucassilvs.featuretoggle.configuration.logs.CustomLoggingEventCompositeJsonEncoder">
+                <providers>
                     <pattern>
-                        {
-                        "Timestamp": "%d{dd-MM-yyyy HH:mm:ss.SSS}",
-                        "Application-name": "Feature Toggle",
-                        "LogType": "%level",
-                        "logger": "%logger",
-                        "Thread: "%thread",
-                        "message": "%m",
-                        "AppLog": "#tryFlagJson{%message},
-                        "StackTrace": "%ex{full}"
-                        }
+                        <pattern>
+                            {
+                            "Timestamp": "%d{yyyy-MM-dd HH:mm:ss.SSS}",
+                            "AppName": "feature--toggle",
+                            "LogType": "%level",
+                            "AppLog": "#tryFlatJson{%message}",
+                            "StackTrace": "%ex"
+                            }
+                        </pattern>
                     </pattern>
-                </pattern>
-            </provider>
-        </encoder>
-    </appender>
+                </providers>
+            </encoder>
+        </appender>
     </springProfile>
 
-    <springProfile name="!json-encoding">
-        <innclude resource="org/springframework/logging/logback/console-appender.xml"/>
+    <springProfile name="!json">
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
     </springProfile>
-
     <root level="info">
         <appender-ref ref="CONSOLE"/>
     </root>

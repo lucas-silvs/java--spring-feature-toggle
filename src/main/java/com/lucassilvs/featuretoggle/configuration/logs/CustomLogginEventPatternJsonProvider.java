@@ -11,8 +11,6 @@ public class CustomLogginEventPatternJsonProvider extends AbstractPatternJsonPro
     public CustomLogginEventPatternJsonProvider() {
     }
 
-
-    @Override
     protected AbstractJsonPatternParser<ILoggingEvent> createParser(JsonFactory jsonFactory) {
         return new CustomLogginEventJsonPatternParser(this.getContext(), jsonFactory);
     }

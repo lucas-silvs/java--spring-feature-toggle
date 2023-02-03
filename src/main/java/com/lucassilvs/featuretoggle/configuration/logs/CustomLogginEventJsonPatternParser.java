@@ -12,7 +12,6 @@ import com.github.wnameless.json.flattener.JsonFlattener;
 import net.logstash.logback.composite.JsonReadingUtils;
 import net.logstash.logback.pattern.LoggingEventJsonPatternParser;
 
-import java.io.IOException;
 
 public class CustomLogginEventJsonPatternParser extends LoggingEventJsonPatternParser {
 
@@ -27,11 +26,6 @@ public class CustomLogginEventJsonPatternParser extends LoggingEventJsonPatternP
         this.jsonFactory = jsonFactory;
         this.objectMapper = new ObjectMapper();
         this.addOperation("tryFlatJson", new TryFlatJsonOperation());
-    }
-
-    @Override
-    protected PatternLayoutBase<ILoggingEvent> createLayout() {
-        return null;
     }
 
     protected class TryFlatJsonOperation implements Operation<JsonNode>{

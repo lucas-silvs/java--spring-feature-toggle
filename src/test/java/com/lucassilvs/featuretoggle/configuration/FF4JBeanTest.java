@@ -1,4 +1,4 @@
-package com.lucassilvs.featuretoggle.config;
+package com.lucassilvs.featuretoggle.configuration;
 
 import org.ff4j.FF4j;
 import org.ff4j.core.FlippingExecutionContext;
